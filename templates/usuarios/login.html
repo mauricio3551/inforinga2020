@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block contenido %}             
+    <div class="container login mt-2 text-white shadow-lg p-3 rounded" style="background:#007F5F">        
+        <div class="titulo d-flex justify-content-center mb-3 mt-5">
+            <h1>INICIAR SESION</h1>
+        </div>
+        <div class="entrada">
+            <form class="" method="POST">{% csrf_token %}
+                {{form.errors}}
+                {{ form|crispy }}
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn-danger mt-3 btn-lg btn-block" style="background: #BF6300" value="ENVIAR">ACCEDER</button>            
+                </div>
+            </form>
+        </div>
+        <br>
+        <div class="container d-flex justify-content-center">            
+            <a class="text-white" href="{% url 'usuarios:registrar' %}">¿No tenes cuenta? Registrate. </a>
+        </div>
+    </div>
+    <br>
+{% endblock %}
