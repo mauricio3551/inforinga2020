@@ -14,16 +14,16 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'usuarios/css/registro.css' %}">
 	<title>INFORINGA</title>
 </head>
-<body>
+<body style="background-color: #45544E;">
 	<header>
 	<!--IMAGEN PRINCIPAL-->
-		<div class="container-fuild d-flex justify-content-center imagenlogo">			
+		<div class="container-fuild d-flex justify-content-center imagenlogo" style="background-color: #10C26B">			
 			<img src="{% static 'portada/image/LogoINFORINGA-01.png' %}" width="150" height="auto" class="img-responsive align-center d-md-none d-lg-block d-sm-none d-md-block d-none d-sm-block" alt="Responsive image">
 		</div>		
 	<!--FIN DE IMAGEN PRINCIPAL-->
 	</header>
 	<!--NAVBAR-->
-	<nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #007F5F;">
+	<nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #3FC18D;">
 		<a class="navbar-brand text-white" href="#">
 			<img src="{% static 'portada/image/INFORINGAlogochiquito.png' %}" width="40" height="40" class="d-inline-block align-top" alt="" loading="logo">				
 		</a>
@@ -31,35 +31,35 @@
 			<span class="navbar-toggler-icon"></span>
 		</button>		  
 		<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-			<div class="text-center mr-auto">
+			<div class="text-center mr-auto" >
 				<ul class="navbar-nav">
 					<li class="nav-item">
-						<a class="nav-link text-white" href="{% url 'inicio' %}">Home <span class="sr-only">(current)</span></a>
+						<a class="btn btn-outline-success" style="color: #000000; font-weight: bold;" href="{% url 'inicio' %}" >Home <span class="sr-only">(current)</span></a>
 					</li>
 					<li class="nav-item">
-						<a href="#" class="btn btn-success">Crear Post</a>
+						<a class="btn btn-outline-success" style="color: #000000; font-weight: bold;" href="{% url 'crearPost' %}">Crear Post</a>
 					</li>
 					<li class="nav-item">
-						<a href="#" class="nav-link text-white" href="#">Ultimos Posteos</a>
+						<a class="btn btn-outline-success" style="color: #000000; font-weight: bold;" href="#">Ultimos Posteos</a>
 					</li>
 					<li class="nav-item">
-						<a href="#" class="nav-link text-white">Ultimos Comentarios</a>
+						<a class="btn btn-outline-success" style="color: #000000; font-weight: bold;" href="#">Ultimos Comentarios</a>
 					</li>					
 				</ul>				
 			</div>
 			<div class="d-flex justify-content-center">				
 				{% if user.is_authenticated %}
 				<div>
-					<a href="#" class="btn btn-danger mr-2 text-uppercase" style="background-color: #BF6300;">BIENVENIDO {{user.username}}</a>
+					<a href="#" class="btn btn-outline-success" style="color: #000000; font-weight: bold;" >BIENVENIDO {{user.username}}</a>
 				</div>
 				<div>
-					<a href="{% url 'logout' %}" class="btn btn-danger mr-2" style="background-color: #BF6300;">SALIR</a>
+					<a href="{% url 'logout' %}" class="btn btn-warning" style="color: #000000; font-weight: bold">SALIR</a>
 				</div>
 				{% else %}	
 				<div>
 					<div>
-						<a href="{% url 'usuarios:registrar' %}" class="btn btn-danger mr-2" style="background-color: #BF6300;">REGISTRARSE</a>
-						<a href="{% url 'login' %}" class="btn btn-danger mr-2" style="background-color: #BF6300;">ACCEDER</a>
+						<a href="{% url 'usuarios:registrar' %}" class="btn btn-warning" style="color: #000000; font-weight: bold">REGISTRARSE</a>
+						<a href="{% url 'login' %}" class="btn btn-warning" style="color: #000000; font-weight: bold"> ACCEDER</a>
 					</div>
 				</div>
 				{% endif %}
@@ -73,8 +73,8 @@
         {% endblock %}        
     </div>	
 	<!--FOOTER-->
-	<footer id="sticky-footer" class="py-4 text-white" style="background-color: #007F5F;">
-		<div class="container text-center" >
+	<footer id="sticky-footer" class="py-4 text-white" style="background-color: #3FC18D;">
+		<div class="container text-center" style="color: #000000;">
 		  <small>Copyright &copy; Your Website</small>
 		</div>
 	</footer>

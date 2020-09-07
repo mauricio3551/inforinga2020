@@ -5,3 +5,7 @@ def Home(request):
 
 def Login(request):
     return render(request,'usuarios/login.html')
+
+def CrearPost(request):
+    return render(request,'crearPost.html')
+
