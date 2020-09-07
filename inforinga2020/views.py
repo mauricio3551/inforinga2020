@@ -5,12 +5,3 @@ def Home(request):
 
 def Login(request):
     return render(request,'usuarios/login.html')
-
-def CrearPost(request):
-    return render(request,'crearPost.html')
-
-def PosteosRecientes(request):
-    return render(request,'PosteosRecientes.html')
-
-def ComentariosRecientes(request):
-    return render(request,'ComentariosRecientes.html')
