@@ -8,6 +8,7 @@ urlpatterns = [
     path('' , views.Home , name='inicio'),    
     path('Login' , auth.LoginView.as_view(template_name="usuarios/login.html") , name='login'),
     path('Logout' , auth.LogoutView.as_view() , name='logout'),
+    path('Perfil', views.Perfil, name='perfil'),
 
     #Apps incluidas
     path('Usuarios',include('apps.usuarios.urls'))

@@ -11,6 +11,8 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 	<link rel="stylesheet" type="text/css" href="{% static 'portada/css/base.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'usuarios/css/login.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'usuarios/css/perfil.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'usuarios/css/editar.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'usuarios/css/registro.css' %}">
 	<title>INFORINGA</title>
 </head>
@@ -50,7 +52,7 @@
 			<div class="d-flex justify-content-center">				
 				{% if user.is_authenticated %}
 				<div>
-					<a href="#" class="btn btn-danger mr-2 text-uppercase" style="background-color: #BF6300;">BIENVENIDO {{user.username}}</a>
+					<a href="{% url 'perfil' %}" class="btn btn-danger mr-2 text-uppercase" style="background-color: #BF6300;">BIENVENIDO {{user.username}}</a>
 				</div>
 				<div>
 					<a href="{% url 'logout' %}" class="btn btn-danger mr-2" style="background-color: #BF6300;">SALIR</a>
