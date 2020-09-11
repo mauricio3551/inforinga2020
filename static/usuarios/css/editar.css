@@ -1,0 +1,11 @@
+.editar {    
+    height: 750px;
+    width: 650px;
+    padding-top: 40px;   
+}
+
+.btn:active {
+    background-color: #9d5202!Important;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
