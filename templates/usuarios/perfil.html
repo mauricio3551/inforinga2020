@@ -1,6 +1,17 @@
 {% extends 'base.html' %}
 {% load static %}
 
+<!-- AGREGO EL TITULO DEL TEMPLATE-->
+{% block titulo %}
+Perfil
+{% endblock %}
+
+<!--DE ESTA FORMA AGREGO EL PERFIL.CSS AL BLOQUE DE LA BASE/ BLOCK.SUPER SE USA PARA OBTENER EL CONTENIDO DEL BLOQUE PADRE -->
+{% block css %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'usuarios/css/perfil.css' %}">
+{% endblock %}
+
 {% block contenido %}
 
     <div class="container cuerpo mt-5 mb-5 text-white shadow-lg p-3 rounded"> 
