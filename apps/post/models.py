@@ -21,14 +21,26 @@ class Post(models.Model):
 	fecha_creacion = models.DateTimeField(auto_now=True)	
 	fecha_modificacion = models.DateTimeField(auto_now_add=True)
 	contenido = models.TextField()
+	likes = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='likesPost')
 
 	categoria = models.ForeignKey(Categoria, null=False, blank=False, on_delete=models.CASCADE)
 	usuario = models.ForeignKey(settings.AUTH_USER_MODEL, null=False, blank=False, on_delete=models.CASCADE)
+
+	def __str__(self):
+		return self.titulo
+
+	def total_likes(self):
+		return self.likes.count()
+
+
 
 class Comentario(models.Model):
 	id = models.AutoField(primary_key=True)
 	fecha_creacion = models.DateTimeField(auto_now=True)
 	contenido = models.TextField()
 
-	usuario = models.ForeignKey(settings.AUTH_USER_MODEL, null=False, blank=False, on_delete=models.CASCADE)
-	post = models.ForeignKey(Post, null=False, blank=False, on_delete=models.CASCADE)
+	usuario_comentario = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=False, on_delete=models.CASCADE)
+	post = models.ForeignKey(Post, null=True, blank=False, on_delete=models.CASCADE, related_name='commentsPost')
+
+	def __str__(self):
+		return '%s - %s' % (self.post.titulo, self.usuario)
