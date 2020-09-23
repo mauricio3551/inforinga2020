@@ -70,7 +70,7 @@
 			
 		{% else %}
 			{% for comment in post.commentsPost.all %}
-		        	<small><strong>{{ comment.usuario.username }} - {{ comment.fecha_creacion }}</strong></small>
+		        	<small><strong>{{ comment.usuario_comentario.username }} - {{ comment.fecha_creacion }}</strong></small>
 		        	<br/>
 		        	{{ comment.contenido|linebreaks }}
 			{% endfor %}

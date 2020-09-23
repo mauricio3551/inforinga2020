@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
 from apps.post.models import Post,Comentario
 from django.urls import reverse_lazy, reverse
@@ -42,8 +42,11 @@ class ComentarioAgregar(LoginRequiredMixin, CreateView):
 	login_url = settings.LOGIN_URL
 
 	def form_valid(self, form):
-		form.instance.post_id = self.kwargs['pk']
-		return super().form_valid(form)
+		x = form.save(commit=False)
+		x.post_id = self.kwargs['pk']
+		x.usuario_comentario = self.request.user 
+		x.save()
+		return redirect(self.success_url)
 
 
 
