@@ -27,7 +27,3 @@ class ComentarioForm(forms.ModelForm):
 		fields = [
 			'contenido',
 		]
-
-		labels = {
-			'contenido': 'Ingrese el Titulo',
-		}

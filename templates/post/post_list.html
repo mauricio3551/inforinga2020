@@ -26,7 +26,8 @@ Posteos Recientes
 							</div>
 							<div class="col-12 col-sm-9">
 								<div class="card-body">
-									<h5 class="card-title"><a href="{% url 'MostrarPost' post.id %}">{{ post.titulo }}</a></h5>
+									<h3 class="card-title"><a href="{% url 'MostrarPost' post.id %}">{{ post.titulo }} </a></h3>
+									<h5>Comentarios: <strong>{{ post.commentsPost.count }}</strong></h5>
 
 					  				<div class="card-text">
 					  					<small>Posteado por 
@@ -95,6 +96,9 @@ Posteos Recientes
 	{% else %}
 	<div class="text-center mb-4 mt-4">
 		Aún no se ha realizado ni un Post. 
+		<div class="text-center mb-4 mt-4">
+			<a href="{% url 'CrearPost' %}" class="boton-naranja btn btn-danger">Crear Post</a>
+		</div>
    </div>
 	{% endif %}
 
