@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
 from apps.post.models import Post,Comentario
 from django.urls import reverse_lazy, reverse
@@ -13,10 +13,17 @@ import re
 
 def LikeView(request, pk):
 	post = get_object_or_404(Post, id=request.POST.get('post_id'))
-	post.likes.add(request.user)
+	liked = False
+	if post.likes.filter(id=request.user.id).exists():
+		post.likes.remove(request.user)
+		liked = False
+	else:
+		post.likes.add(request.user)
+		liked = True
+	
 	return HttpResponseRedirect(reverse('MostrarPost', args=[str(pk)]))
 
-
+#----------------------------------------------------- POST --------------------------------------------------------------------------
 
 class PostAgregar(LoginRequiredMixin, CreateView):
 	model = Post
@@ -28,24 +35,11 @@ class PostAgregar(LoginRequiredMixin, CreateView):
 
 	def form_valid(self, form):
 		form.instance.usuario = self.request.user
-		ext = form.instance.portada.name.split(".")[-1]
-		form.instance.portada.name = form.instance.titulo+'.'+ext
+
+		if form.instance.portada.name != "post/no-portada.jpg":
+			ext = form.instance.portada.name.split(".")[-1]
+			form.instance.portada.name = form.instance.titulo+'.'+ext
 		return super().form_valid(form)
-
-
-class ComentarioAgregar(LoginRequiredMixin, CreateView):
-	model = Comentario
-	form_class = ComentarioForm
-	template_name = 'post/comment_form.html'
-	success_url = reverse_lazy('PosteosRecientes')
-
-	login_url = settings.LOGIN_URL
-
-	def form_valid(self, form):
-		form.instance.post_id = self.kwargs['pk']
-		return super().form_valid(form)
-
-
 
 
 
@@ -63,15 +57,11 @@ class PostEditar(LoginRequiredMixin, UpdateView):
 
 	def form_valid(self, form):
 		form.instance.usuario = self.request.user
-		ext = form.instance.portada.name.split(".")[-1]
-		form.instance.portada.name = form.instance.titulo+'.'+ext
+
+		if form.instance.portada.name != "post/no-portada.jpg":
+			ext = form.instance.portada.name.split(".")[-1]
+			form.instance.portada.name = form.instance.titulo+'.'+ext
 		return super().form_valid(form)
-
-
-
-class PostEliminar(LoginRequiredMixin, DeleteView):
-	model = Post
-	success_url = reverse_lazy('PosteosRecientes')
 
 
 
@@ -92,7 +82,13 @@ class MostrarPost(DetailView):
 
 		stuff = get_object_or_404(Post,id=self.kwargs['pk'])
 		total_likes = stuff.total_likes()
+
+		liked = False
+		if stuff.likes.filter(id=self.request.user.id).exists():
+			liked = True
+
 		context['total_likes'] = total_likes
+		context['liked'] = liked
 
 
 		bbcode = [
@@ -124,5 +120,29 @@ class MostrarPost(DetailView):
 
 		return context
 
+
+class PostEliminar(LoginRequiredMixin, DeleteView):
+	model = Post
+	success_url = reverse_lazy('PosteosRecientes')
+
+
+
+
+#----------------------------------------------------- COMENTARIO --------------------------------------------------------------------------
+
+class ComentarioAgregar(LoginRequiredMixin, CreateView):
+	model = Comentario
+	form_class = ComentarioForm
+	template_name = 'post/comment_form.html'
+	success_url = reverse_lazy('PosteosRecientes')
+
+	login_url = settings.LOGIN_URL
+
+	def form_valid(self, form):
+		x = form.save(commit = False)
+		x.post_id = self.kwargs['pk']
+		x.usuario = self.request.user
+		x.save()
+		return redirect(self.success_url)
 
 
