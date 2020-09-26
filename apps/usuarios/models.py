@@ -6,4 +6,3 @@ class Usuario(AbstractUser):
     provincia = models.CharField(max_length=30, null=True)
     ciudad = models.CharField(max_length=30, null=True)
     universidad = models.CharField(max_length=50, null=True)
-    pass

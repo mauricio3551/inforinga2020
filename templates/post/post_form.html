@@ -18,6 +18,7 @@ Agregar post
   <script src="{% static 'post/js/post.js' %}"></script>
 {% endblock %}
 
+
 {% block contenido %}
 <div class="row cuerpo rounded">
   <div class="col-12 item">
@@ -40,12 +41,12 @@ Agregar post
           <div class="form-group col-12">
             {{ form.contenido|as_crispy_field }}
             <div class="btn-group" role="group">
-              <button type="button" class="btn btn-danger boton-naranja" onclick="insertarBBCode('negrita');">Negrita</button>
-              <button type="button" class="btn btn-danger boton-naranja" onclick="insertarBBCode('cursiva');">Cursiva</button>
-              <button type="button" class="btn btn-danger boton-naranja" onclick="insertarBBCode('subrayado');">Subrayado</button>
-              <button type="button" class="btn btn-danger boton-naranja" onclick="insertarBBCode('a-centro');">Centrado</button>
-              <button type="button" class="btn btn-danger boton-naranja" onclick="insertarBBCode('url');">URL</button>
-              <button type="button" class="btn btn-danger boton-naranja" onclick="insertarBBCode('imagen');">Imagen</button>
+              <button type="button" class="btn btn-boton_personalizado" onclick="insertarBBCode('negrita');">Negrita</button>
+              <button type="button" class="btn btn-boton_personalizado" onclick="insertarBBCode('cursiva');">Cursiva</button>
+              <button type="button" class="btn btn-boton_personalizado" onclick="insertarBBCode('subrayado');">Subrayado</button>
+              <button type="button" class="btn btn-boton_personalizado" onclick="insertarBBCode('a-centro');">Centrado</button>
+              <button type="button" class="btn btn-boton_personalizado" onclick="insertarBBCode('url');">URL</button>
+              <button type="button" class="btn btn-boton_personalizado" onclick="insertarBBCode('imagen');">Imagen</button>
             </div>
           </div>
         </div>
@@ -56,7 +57,7 @@ Agregar post
           </div>
         </div>
 
-      <button type="submit" class="btn btn-danger mt-5 btn-lg btn-block mb-4 boton-naranja" value="CREAR POST">CREAR POST</button>   
+      <button type="submit" class="btn btn-boton_personalizado mt-5 btn-lg btn-block mb-4" value="CREAR POST">CREAR POST</button>   
     </form>
   </div>
 </div>

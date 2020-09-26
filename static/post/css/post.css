@@ -1,12 +1,19 @@
+
+.row {
+	margin-top: 50px;
+	margin-left: 50px;
+	margin-right: 50px;		
+}
 .post-listar
 {
-	max-height: 170px;
+	max-height: 470px;
 }
 
 .post-listar .img
 {
 	max-height: 169px;
 	overflow: hidden;
+	margin-bottom: 50px;
 }
 
 .post-listar .img .card-img
@@ -39,7 +46,7 @@
 
 	.post-listar .img
 	{
-		max-height: 500px;
+		max-height: 200px;
 	}
 }
 
@@ -97,4 +104,100 @@
 	{
 		max-height: 104px;
 	}
+}
+
+.btn-boton_personalizado{
+  padding: .375rem .75rem;
+  border-radius: .25rem;
+  background-color: #E74E67;
+  color: #FFFFFF;
+  font-weight: bold;
+  transition: background-color .15s ease-in-out;
+}
+
+.btn-boton_personalizado:hover, .btn-boton_personalizado:focus {
+  background-color: #EC94A2;
+  color: #000000
+}
+
+.btn-boton_personalizado:active {
+  background-color: #EC94A2;
+}
+
+
+
+.btn-editar{
+	padding: .375rem .75rem;
+	border-radius: .25rem;
+	background-color: #93EDA9;
+	color: #000000;
+	font-weight: bold;
+	transition: background-color .15s ease-in-out;
+}
+
+.btn-editar:hover, .btn-editar:focus {
+  background-color: #FFFFFF;
+  color: #000000
+}
+
+.btn-editar:active {
+  background-color: #93EDA9;
+}
+
+
+
+.btn-eliminar{
+	padding: .375rem .75rem;
+	border-radius: .25rem;
+	background-color: #FFFFFF;
+	color: #000000;
+	font-weight: bold;
+	transition: background-color .15s ease-in-out;
+}
+
+.btn-eliminar:hover, .btn-eliminar:focus {
+  background-color: #93EDA9;
+  color: #000000
+}
+
+.btn-eliminar:active {
+  background-color: #93EDA9;
+}
+
+
+
+.btn-like{
+  padding: .375rem .75rem;
+  border-radius: .25rem;
+  background-color: #93EDA9;
+  color: #000000;
+  font-weight: bold;
+  transition: background-color .15s ease-in-out;
+}
+
+.btn-like:hover, .btn-like:focus {
+  background-color: #FFFFFF;
+  color: #000000
+}
+
+.btn-like:active {
+  background-color: #2CA48E;
+}
+
+.btn-dislike{
+  padding: .375rem .75rem;
+  border-radius: .25rem;
+  background-color: #AB1807;
+  color: #FFFFFF;
+  font-weight: bold;
+  transition: background-color .15s ease-in-out;
+}
+
+.btn-dislike:hover, .btn-dislike:focus {
+  background-color: #FFFFFF;
+  color: #000000
+}
+
+.btn-dislike:active {
+  background-color: #AB1807;
 }
