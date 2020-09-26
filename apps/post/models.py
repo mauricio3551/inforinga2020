@@ -17,7 +17,7 @@ class Categoria(models.Model):
 class Post(models.Model):
 	id = models.AutoField(primary_key=True)
 	titulo = models.CharField(max_length=100)
-	portada = models.ImageField(upload_to='post/', default='post/no-portada.jpg', validators=[validar_extension])
+	portada = models.ImageField(upload_to='post/', null=True, blank=True,validators=[validar_extension])
 	fecha_creacion = models.DateTimeField(auto_now=True)	
 	fecha_modificacion = models.DateTimeField(auto_now_add=True)
 	contenido = models.TextField()
