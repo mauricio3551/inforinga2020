@@ -27,7 +27,7 @@ class Post(models.Model):
 	usuario = models.ForeignKey(settings.AUTH_USER_MODEL, null=False, blank=False, on_delete=models.CASCADE)
 
 	def __str__(self):
-		return self.titulo
+		return '%s - %s - %s' % (self.titulo, self.categoria, self.usuario)
 
 	def total_likes(self):
 		return self.likes.count()
@@ -39,7 +39,7 @@ class Comentario(models.Model):
 	fecha_creacion = models.DateTimeField(auto_now=True)
 	contenido = models.TextField()
 
-	usuario_comentario = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=False, on_delete=models.CASCADE)
+	usuario = models.ForeignKey(settings.AUTH_USER_MODEL, null=False, blank=False, on_delete=models.CASCADE)
 	post = models.ForeignKey(Post, null=True, blank=False, on_delete=models.CASCADE, related_name='commentsPost')
 
 	def __str__(self):

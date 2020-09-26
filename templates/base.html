@@ -27,50 +27,49 @@
 	<!--NAVBAR-->
 	<nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #007F5F;">
 		<a class="navbar-brand text-white" href="{% url 'inicio' %}">
-			<img src="{% static 'portada/image/INFORINGAlogochiquito.png' %}" width="40" height="40" class="d-inline-block align-top" alt="" loading="logo">				
+			<img src="{% static 'portada/image/INFORINGAlogochiquito.png' %}" width="40" height="40" class="d-inline-block align-top" alt="" loading="logo">        
 		</a>
 		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
-		</button>		  
+		</button>     
 		<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 			<div class="text-center mr-auto">
 				<ul class="navbar-nav">
 					<li class="nav-item">
-						<a href="{% url 'CrearPost' %}" class="btn btn-success">Crear Post</a>
+						<a href="{% url 'inicio' %}" class="btn btn-navbar mr-2">Home</a>
 					</li>
 					<li class="nav-item">
-						<a href="{% url 'PosteosRecientes' %}" class="nav-link text-white" href="#">Ultimos Posteos</a>
+						<a href="{% url 'CrearPost' %}" class="btn btn-navbar mr-2">Crear Post</a>
 					</li>
 					<li class="nav-item">
-						<a href="#" class="nav-link text-white">Ultimos Comentarios</a>
-					</li>					
-				</ul>				
+						<a href="{% url 'PosteosRecientes' %}" class="btn btn-navbar">Ultimos Posteos</a>
+					</li>         
+				</ul>       
 			</div>
-			<div class="d-flex justify-content-center">				
+			<div class="d-flex justify-content-center">       
 				{% if user.is_authenticated %}
 				<div>
-					<a href="{% url 'perfil' %}" class="btn btn-danger mr-2 text-uppercase" style="background-color: #BF6300;">BIENVENIDO {{user.username}}</a>
+					<a href="{% url 'perfil' %}" class="btn btn-boton_personalizado mr-2 text-uppercase">BIENVENIDO {{user.username}}</a>
 				</div>
 				<div>
-					<a href="{% url 'logout' %}" class="btn btn-danger mr-2" style="background-color: #BF6300;">SALIR</a>
+					<a href="{% url 'logout' %}" class="btn btn-boton_personalizado mr-2">SALIR</a>
 				</div>
-				{% else %}	
+				{% else %}  
 				<div>
 					<div>
-						<a href="{% url 'usuarios:registrar' %}" class="btn btn-danger mr-2" style="background-color: #BF6300;">REGISTRARSE</a>
-						<a href="{% url 'login' %}" class="btn btn-danger mr-2" style="background-color: #BF6300;">ACCEDER</a>
+						<a href="{% url 'usuarios:registrar' %}" class="btn btn-boton_personalizado mr-2" >REGISTRARSE</a>
+						<a href="{% url 'login' %}" class="btn btn-boton_personalizado mr-2" >ACCEDER</a>
 					</div>
 				</div>
 				{% endif %}
-			</div>				
-		</div>						
+			</div>        
+		</div>            
 	</nav>
-	<!--FIN NAVBAR-->		
-    <div class="container mt-4 mb-4">        
-        {% block contenido %}
+	
+	<!--FIN NAVBAR-->		       
+	{% block contenido %}
     
-        {% endblock %}        
-    </div>	
+	{% endblock %}   
 	<!--FOOTER-->
 	<footer id="sticky-footer" class="py-4 text-white" style="background-color: #007F5F;">
 		<div class="container text-center" >
