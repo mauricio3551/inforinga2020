@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 {% load static %}
 
 <!-- AGREGO EL TITULO DEL TEMPLATE-->
@@ -19,9 +20,14 @@ Editar Usuario
 			<h1>EDITAR PERFIL</h1>
 		</div>
 		{{form.errors}}	
-		<form class="container modificar" method="POST">{% csrf_token %}			
+		<form class="container modificar" method="POST" enctype="multipart/form-data">{% csrf_token %}
+			<div id="div_id_imagen" class="form-group">
+				<div class="">
+					{{ form.imagen |as_crispy_field }}
+				</div>
+			</div>			
 			<div id="div_id_email" class="form-group"> 
-				<label for="id_email" class="">Dirección de email</label> 
+				<label for="id_email" class="">Dirección de  email</label> 
 				<div class=""> 
 					<input type="email" name="email" value="{{user.email}}" maxlength="254" class="emailinput form-control" id="id_email"> 
 				</div> 
@@ -39,9 +45,8 @@ Editar Usuario
 				</div>
 			</div>
 			<div id="div_id_provincia" class="form-group"> 
-				<label for="id_provincia" class="">Provincia</label> 
 				<div class=""> 
-					<input type="text" name="provincia" value="{{user.provincia}}" maxlength="150" class="textinput textInput form-control" id="id_last_name"> 
+					{{ form.provincia |as_crispy_field }}
 				</div>
 			</div>
 			<div id="div_id_ciudad" class="form-group"> 
