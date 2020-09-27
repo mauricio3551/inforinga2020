@@ -1,7 +1,7 @@
 
 .cuerpo {    
     background-color: #007F5F!Important;    
-    height: 950px;
+    height: 100%;
     width: 650px;
     padding-top: 40px;
 }
@@ -15,4 +15,8 @@
     background-color: #9d5202!Important;
     box-shadow: 0 5px #666;
     transform: translateY(4px);
+}
+
+.img-responsive {
+    max-width: 20%;
 }

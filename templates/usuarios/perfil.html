@@ -19,7 +19,13 @@ Perfil
 		<div class="container perfil d-flex justify-content-center text-white ">
 			<h2 class="titulo mt-3 mb-4">PERFIL DE USUARIO</h2>
 		</div>
-		<div class="container descripcion text-white">        
+		<div class="container descripcion text-white">
+			{% if user.imagen %}
+				<img src="{{ user.imagen.url }}" class="rounded mx-auto d-block img-responsive rounded-circle account-image" id="img_perfil">
+			{% else %}
+				<img src="{% static 'usuarios/image/imagen_perfil_default.png' %}" class="rounded mx-auto d-block img-responsive rounded-circle account-image" id="img_perfil">
+			{% endif %} 
+			<br>
 			<p class="item d-flex justify-content-center"> Nombre de Usuario <p class="d-flex justify-content-center rounded pt-2 pb-2" style="background-color: #005943"> {{user}} </p> </p>
 			<p class="item d-flex justify-content-center"> Nombre <p class="d-flex justify-content-center rounded pt-2 pb-2" style="background-color: #005943"> {{user.first_name}} </p> </p>
 			<p class="item d-flex justify-content-center"> Apellido <p class="d-flex justify-content-center rounded pt-2 pb-2" style="background-color: #005943"> {{user.last_name}} </p> </p>

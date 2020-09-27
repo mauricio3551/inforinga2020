@@ -89,7 +89,11 @@
 							
 							<div align="center">
 								<h5 class="card-title">Usuario: {{ post.usuario.username }}</h5>
-								<img src="{% static 'usuarios/image/imagen_perfil_default.png'  %}" style="width:100px; height:100px; ">
+								{% if object.usuario.imagen.url != None %}
+									<img src="{{ object.usuario.imagen.url }}" style="width:100px; height:100px; ">
+								{% else %}
+									<img src="{% static 'usuarios/image/imagen_perfil_default.png' %}"  style="width:100px; height:100px;">
+								{% endif %} 
 							</div>
 							{% if user.id == post.usuario.id %}
 								<div class="text-center mb-4 mt-4">

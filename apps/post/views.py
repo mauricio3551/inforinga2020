@@ -36,7 +36,7 @@ class PostAgregar(LoginRequiredMixin, CreateView):
 	def form_valid(self, form):
 		form.instance.usuario = self.request.user
 
-		if form.instance.portada.name != "post/no-portada.jpg":
+		if form.instance.portada.name:
 			ext = form.instance.portada.name.split(".")[-1]
 			form.instance.portada.name = form.instance.titulo+'.'+ext
 		return super().form_valid(form)
@@ -58,7 +58,7 @@ class PostEditar(LoginRequiredMixin, UpdateView):
 	def form_valid(self, form):
 		form.instance.usuario = self.request.user
 
-		if form.instance.portada.name != "post/no-portada.jpg":
+		if form.instance.portada.name:
 			ext = form.instance.portada.name.split(".")[-1]
 			form.instance.portada.name = form.instance.titulo+'.'+ext
 		return super().form_valid(form)
