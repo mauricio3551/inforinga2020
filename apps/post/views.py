@@ -11,6 +11,12 @@ import re
 
 # Create your views here.
 
+def Busqueda(request):
+	if request.method == 'GET':
+		search = request.GET.get('search')
+		post = Post.objects.all().filter(titulo=search)
+		return render(request, 'resultados.html', {'post': post})
+
 def LikeView(request, pk):
 	post = get_object_or_404(Post, id=request.POST.get('post_id'))
 	liked = False
