@@ -1,3 +1,4 @@
+
 {% extends 'base.html' %}
 {% load static %}
 
@@ -111,4 +112,49 @@ Posteos Recientes
 
   </div>
 </div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% block contenido %}
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 search">
+						<form method="get">
+							<div id="custom-search-input">
+								<input type="text" class="form-control" placeholder="Buscar..." name="buscar">
+								<span class="input-group-list">
+									<i class="icon icon-search"></i>
+									<button type="submit" class="boton btn-success">Buscar</button>
+								</span>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
 {% endblock %}
