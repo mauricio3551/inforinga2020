@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	
+	{% if post %}
+		{% for post in contenido %}
+				{{post.contenido}}
+		{% endfor %}
+	{% endif %}
+{% endblock %}

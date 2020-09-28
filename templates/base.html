@@ -24,6 +24,7 @@
 		</div>		
 	<!--FIN DE IMAGEN PRINCIPAL-->
 	</header>
+
 	<!--NAVBAR-->
 	<nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #007F5F;">
 		<a class="navbar-brand text-white" href="{% url 'inicio' %}">
@@ -43,7 +44,7 @@
 					</li>
 					<li class="nav-item">
 						<a href="{% url 'PosteosRecientes' %}" class="btn btn-navbar">Ultimos Posteos</a>
-					</li>         
+					</li>       
 				</ul>       
 			</div>
 			<div class="d-flex justify-content-center">       
@@ -66,7 +67,19 @@
 		</div>            
 	</nav>
 
-	
+	<div class="busqueda">
+		<form class="navbar-search pull.left" method="POST" action="/post/buscar/"> {% csrf_token %}
+			<input type="text" name="buscalo" class="search-query" placeholder="Buscar">
+			<div class="btn-group">
+				<button class="btn btn-primary" type="submit">
+					<i class="icon-search"></i>
+				</button>
+			</div>
+		</form>
+	</div>	
+
+
+
 	<!--FIN NAVBAR-->		       
 	{% block contenido %}
     
@@ -87,5 +100,6 @@
 
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 	{% endblock %}
-</body>
+
+	</body>
 </html>

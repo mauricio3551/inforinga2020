@@ -6,7 +6,7 @@ from apps.post.forms import PostForm, ComentarioForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.conf import settings
 from django.http import HttpResponseRedirect
-from django.db.models import Q
+
 
 import re
 
@@ -126,15 +126,18 @@ class PostEliminar(LoginRequiredMixin, DeleteView):
 	model = Post
 	success_url = reverse_lazy('PosteosRecientes')
 
-def buscarPost(request):
-	queryset= request.GET.get("buscar")
-	posts = Post.objects.filter(estado = True)
-	if queryset:
-		posts=Post.objects.filter(
-			Q(titulo=queryset) |
-			Q(contenido=queryset)
-			).distinct()
-	return render(request,'index.html', {'posts':posts})
+class BuscarView(TemplateView):
+
+	def post(self, request, *args, **kwargs):
+		buscar =  request.POST['buscalo']
+		post = Post.objects.filter(titulo__contains=buscar)
+		if post:
+			print ("Ha buscado un titulo de post")
+		else:
+			contenido= Post.objects.filter(contenido__contains=buscar)
+			return render(request, 'post/buscar.html',
+					{'contenido':contenido , 'post': True})
+		
 
 
 #----------------------------------------------------- COMENTARIO --------------------------------------------------------------------------
