@@ -1,4 +1,3 @@
-
 {% extends 'base.html' %}
 {% load static %}
 
@@ -17,6 +16,24 @@ Posteos Recientes
 {% block contenido %}
 <div class="row cuerpo rounded text-white">
   <div class="col-12 item">
+
+
+<div class="container">
+				<div class="row">
+					<div class="col-md-12 search">
+						<form method="get" >
+							<div id="custom-search-input">
+								<input type="text" class="form-control" placeholder="Buscar..." name="buscar">
+								<span class="input-group-list">
+									<i class="icon icon-search"></i>
+									<button type="submit" class="boton btn-success" >Buscar</button>
+								</span>
+							</div>
+						</form>
+					</div>
+				</div>
+</div>
+
 
 
 	{% if object_list %}
@@ -105,56 +122,11 @@ Posteos Recientes
 
 	{% else %} 
 	<div class="text-center mb-4 mt-4">
-		Aún no se ha realizado ni un Post.
+		Ningun Post coincide con su busqueda.
 		<a href="{% url 'CrearPost' %}" class=" btn btn-boton_personalizado">Crear Post</a>
 	</div>
 	{% endif %}
 
   </div>
 </div>
-{% endblock %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{% block contenido %}
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12 search">
-						<form method="get">
-							<div id="custom-search-input">
-								<input type="text" class="form-control" placeholder="Buscar..." name="buscar">
-								<span class="input-group-list">
-									<i class="icon icon-search"></i>
-									<button type="submit" class="boton btn-success">Buscar</button>
-								</span>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
 {% endblock %}
