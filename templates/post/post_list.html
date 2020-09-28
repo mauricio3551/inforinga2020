@@ -12,9 +12,11 @@ Posteos Recientes
 {% endblock %}
 
 
+
 {% block contenido %}
 <div class="row cuerpo rounded text-white">
   <div class="col-12 item">
+
 
 	{% if object_list %}
 
@@ -45,6 +47,9 @@ Posteos Recientes
 						</div>
 					</div>
 		{% endfor %}
+
+
+
 		<div class="text-center mb-4 mt-4">
 			<a href="{% url 'CrearPost' %}" class=" btn btn-boton_personalizado">Crear Post</a>
 		</div>
