@@ -133,12 +133,12 @@ def Buscador(request):
 
 def BuscarPost(request):
 	queryset = request.GET.get("buscar")
-	post = Post.objects.filter()
+	posts = None
 	if queryset:
 		posts = Post.objects.filter(
-			Q(titulo = queryset)  |
-			Q(contenido = queryset)
+			Q(titulo__icontains= queryset)
 			).distinct()
+	print(posts)
 	return render(request,'buscar.html', {'posts':posts})
 
 #----------------------------------------------------- COMENTARIO --------------------------------------------------------------------------
