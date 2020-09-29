@@ -108,39 +108,40 @@
 }
 
 .btn-boton_personalizado{
-  padding: .375rem .75rem;
-  border-radius: .25rem;
-  background-color: #E74E67;
-  color: #FFFFFF;
-  font-weight: bold;
-  transition: background-color .15s ease-in-out;
+	padding: .375rem .75rem;
+	border-radius: .25rem;
+	background-color: #EF891E;
+	color: #000000;
+	font-weight: bold;
+	transition: background-color .15s ease-in-out;
 }
 
 .btn-boton_personalizado:hover, .btn-boton_personalizado:focus {
-  background-color: #EC94A2;
-  color: #000000
+	background-color: #F0B474;
+	color: #000000
 }
 
 .btn-boton_personalizado:active {
-  background-color: #EC94A2;
+	background-color: #EF891E;
 }
+
 
 .btn-editar{
 	padding: .375rem .75rem;
 	border-radius: .25rem;
-	background-color: #93EDA9;
+	background-color: #EF891E;
 	color: #000000;
 	font-weight: bold;
 	transition: background-color .15s ease-in-out;
 }
 
 .btn-editar:hover, .btn-editar:focus {
-  background-color: #FFFFFF;
+  background-color: #F0B474;
   color: #000000
 }
 
 .btn-editar:active {
-  background-color: #93EDA9;
+  background-color: #EF891E;
 }
 
 .btn-eliminar{
@@ -153,18 +154,18 @@
 }
 
 .btn-eliminar:hover, .btn-eliminar:focus {
-  background-color: #93EDA9;
+  background-color: #EF891E;
   color: #000000
 }
 
 .btn-eliminar:active {
-  background-color: #93EDA9;
+  background-color: #EF891E;
 }
 
 .btn-like{
   padding: .375rem .75rem;
   border-radius: .25rem;
-  background-color: #93EDA9;
+  background-color: #EF891E;
   color: #000000;
   font-weight: bold;
   transition: background-color .15s ease-in-out;

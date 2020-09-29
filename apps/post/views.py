@@ -1,12 +1,13 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView, TemplateView
-from apps.post.models import Post,Comentario
+from apps.post.models import Post,Comentario, Categoria
 from django.urls import reverse_lazy, reverse
 from apps.post.forms import PostForm, ComentarioForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.conf import settings
 from django.http import HttpResponseRedirect
 from django.db.models import Q
+from apps.usuarios.models import Usuario
 
 import re
 
@@ -135,10 +136,11 @@ def BuscarPost(request):
 	queryset = request.GET.get("buscar")
 	posts = None
 	if queryset:
+		u = Usuario.objects.filter(username__icontains=queryset)
 		posts = Post.objects.filter(
-			Q(titulo__icontains= queryset)
+			Q(titulo__icontains= queryset) |
+			Q(usuario__in = u)
 			).distinct()
-	print(posts)
 	return render(request,'buscar.html', {'posts':posts})
 
 #----------------------------------------------------- COMENTARIO --------------------------------------------------------------------------
