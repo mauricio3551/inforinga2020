@@ -107,11 +107,12 @@ Posteos Recientes
                     {% endif %}
                     </ul>
                 </nav>
-            {% else %} 
-            <div class="text-center mb-4 mt-4">
-                Ningun Post coincide con su busqueda.
-                <a href="{% url 'CrearPost' %}" class=" btn btn-boton_personalizado">Crear Post</a>
-            </div>
+            {% else %}
+                
+                <div class="text-center mb-4 mt-4">
+                    Ningun Post coincide con su busqueda.
+                    <a href="{% url 'CrearPost' %}" class=" btn btn-boton_personalizado">Crear Post</a>
+                </div>
             {% endif %}
         </div>
     </div>

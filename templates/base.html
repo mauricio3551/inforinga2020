@@ -26,7 +26,7 @@
 	</header>
 
 	<!--NAVBAR-->
-	<nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #007F5F;">
+	<nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #404848;">
 		<a class="navbar-brand text-white" href="{% url 'inicio' %}">
 			<img src="{% static 'portada/image/INFORINGAlogochiquito.png' %}" width="40" height="40" class="d-inline-block align-top" alt="" loading="logo">        
 		</a>
@@ -40,11 +40,13 @@
 						<a href="{% url 'CrearPost' %}" class="btn btn-navbar mr-2">Crear Post</a>
 					</li>
 					<li class="nav-item">
-						<a href="{% url 'PosteosRecientes' %}" class="btn btn-navbar">Ultimos Posteos</a>
-					</li>    
+						<a href="{% url 'PosteosRecientes' %}" class="btn btn-navbar mr-2">Ultimos Posteos</a>
+					</li>
+					{% if user.is_authenticated %}    
 					<li class="nav-item">
 						<a href="{% url 'Buscador' %}" class="btn btn-navbar">Buscar Posteos</a>
-					</li>    
+					</li>
+					{% endif %}    
 				</ul>       
 			</div>
 			<div class="d-flex justify-content-center">       
@@ -73,7 +75,7 @@
     
 	{% endblock %}   
 	<!--FOOTER-->
-	<footer id="sticky-footer" class="py-4 text-white" style="background-color: #007F5F;">
+	<footer id="sticky-footer" class="py-4 text-white" style="background-color: #303535;">
 		<div class="container text-center" >
 		  <small>Copyright &copy; Your Website</small>
 		</div>

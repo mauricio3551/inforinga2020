@@ -7,6 +7,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.conf import settings
 from django.http import HttpResponseRedirect
 from django.db.models import Q
+from apps.usuarios.models import *
 
 import re
 
@@ -141,10 +142,12 @@ def BuscarPost(request):
 	queryset = request.GET.get("buscar")
 	posts = None
 	if queryset:
+		u = Usuario.objects.filter(username__icontains=queryset)
 		posts = Post.objects.filter(
-			Q(titulo__icontains= queryset)
-			).distinct()
-	print(posts)
+			Q(titulo__icontains= queryset) |
+		 	Q(usuario__in = u)
+		).distinct()
+	
 	return render(request,'buscar.html', {'posts':posts})
 
 #----------------------------------------------------- COMENTARIO --------------------------------------------------------------------------
