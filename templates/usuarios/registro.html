@@ -15,7 +15,7 @@ Registro
 
 
 {% block contenido %}
-	<div class="container registro text-white shadow-lg p-3 rounded" style="background:#007F5F">
+	<div class="container registro mt-5 text-white shadow-lg p-3 rounded" style="background:#007F5F">
 		<div class="d-flex justify-content-center mb-4 mt-4">
 			<h1>REGISTRO DE USUARIO</h1>
 		</div>
@@ -23,7 +23,7 @@ Registro
 		<form class="container formulario" method="POST">{% csrf_token %}			
 			{{ form|crispy }}
 			<div class="d-flex justify-content-center">
-				<button type="submit" class="btn btn-boton_personalizado btn-lg btn-block" style="background: #BF6300" value="CREAR">CREAR</button>			
+				<button type="submit" class="btn btn-boton_personalizado btn-lg btn-block" value="CREAR">CREAR</button>			
 			</div>
 			<div class="container mt-3 d-flex justify-content-center">            
 				<a class="text-white" href="{% url 'login' %}">¿Ya tenes cuenta? Logeate. </a>

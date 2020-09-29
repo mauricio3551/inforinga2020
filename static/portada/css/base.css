@@ -7,7 +7,6 @@ body {
 		background-color: #464646;
 }
 
-
 .imagenlogo {
 		background-color: #007F5F;
 		height: 15vh;
@@ -46,10 +45,6 @@ body {
 		color: #232E2E!important;
 } 
 
-
-
-
-
 .btn-boton_personalizado{
 	padding: .375rem .75rem;
 	border-radius: .25rem;
@@ -67,8 +62,6 @@ body {
 .btn-boton_personalizado:active {
 	background-color: #EC94A2;
 }
-
-
 
 .btn-navbar{
 	padding: .375rem .75rem;
