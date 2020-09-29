@@ -3,7 +3,7 @@
 
 <!-- AGREGO EL TITULO DEL TEMPLATE-->
 {% block titulo %}
-	{{ post.titulo }}
+    {{ post.titulo }}
 {% endblock %}
 
 {% block css %}
@@ -13,102 +13,85 @@
 
 
 {% block contenido %}
-
-	<div class="container text-white" style="min-height: calc(100vh - 330px - 100px);">
-		<div class="row text-white rounded post-mostrar rounded" style="background: #007F5F;">
-
-			<div class="container mb-3 mt-3 d-flex justify-content-end" style="color: #FFFFFF;">
-				<small><strong>Post creado por {{ object.usuario.username }} - {{ object.fecha_creacion }}</strong></small>
-			</div>
-			
-			<div class="container mb-4 d-flex justify-content-end">
-				{% if user.id == post.usuario.id %}
-					<form method="post" action="{% url 'EliminarPost' post.id %}">{% csrf_token %}
-						<button type="submit" value="Confirm" class="btn btn-eliminar btn-sm"><strong>ELIMINAR</strong></button>
-						<a href="{% url 'EditarPost' post.id %}"  class="btn btn-editar btn-sm"><strong>Editar</strong></a>
-					</form>	
-				{% endif %}
-			</div>
-			
-			<div class="container d-flex mt-3 mb-3 justify-content-center">
-				<h2 class="card-header" style="color: #FFFFFF">{{ object.titulo }}</h2>
-			</div>
-
-			
-
-			<div class="container mb-5 " style="height: auto; width: 900px;background-color: #005943; color: #FFFFFF; border: 2px solid white; border-radius: 5px">
-				<br/>
-				<p>{{ object.contenido|safe }}</p>
-				<br/><br/>
-				<hr>
-				<form method="post" action="{% url 'like_post' post.id %}">
-					{% csrf_token %}
-
-					{% if liked %}
-						<button type="submit" name="post_id" value="{{ post.id }}" class="btn btn-dislike btn-sm ">No me Gusta</button> 
-					{% else %}
-						<button type="submit" name="post_id" value="{{ post.id }}" class="btn btn-like btn-sm">Me Gusta</button> 
-					{% endif %}
-
-					<strong>- {{ total_likes }} LIKES</strong>
-				</form>
-				<br/>
-			</div>
-
-		</div>
-	</div>
-		
-
-
-
-	<div class="container text-white" style="min-height: calc(100vh - 330px - 100px);">
-		<div class="row text-white rounded post-mostrar rounded" >
-			<div class="container mb-5 " >
-				<div class="row ">
-					<div class="col-xs-12 col-md-8" style="background: #FFFFFF; color: #000000; border-radius: 5px; border: 10px solid #93EDA9;">
-						<h5 class="card-header"><strong>COMENTARIOS</strong></h5>
-						
-						<div class="card-body" >
-							{% if not post.commentsPost.all %}
-								No hay comentarios aún.
-							{% else %}
-								{% for comment in post.commentsPost.all %}
-									{% include "post/mostrar_comentarios.html" with comment=comment %}			        	
-								{% endfor %}
-							{% endif %}
-							
-						</div>
-						<div class="text-center mb-4 mt-4">
-							<a href="{% url 'CrearComentario' post.pk %}" class="btn btn-boton_personalizado btn-sm">Comentar</a>
-						</div>
-					</div>
-					<div class="col-xs-6 col-md-4"style="background: #93EDA9; color: #000000; border-radius: 5px; border: 10px solid white;">
-						<h5 class="card-header"><strong>CREADOR DEL POST</strong></h5>
-						<br/>
-						<div class="card-body">
-							
-							<div align="center">
-								<h5 class="card-title">Usuario: {{ post.usuario.username }}</h5>
-								{% if object.usuario.imagen.url != None %}
-									<img src="{{ object.usuario.imagen.url }}" style="width:100px; height:100px; ">
-								{% else %}
-									<img src="{% static 'usuarios/image/imagen_perfil_default.png' %}"  style="width:100px; height:100px;">
-								{% endif %} 
-							</div>
-							{% if user.id == post.usuario.id %}
-								<div class="text-center mb-4 mt-4">
-									<a href="{% url 'perfil' %}" class="btn btn-boton_personalizado btn-sm">Perfil</a>
-								</div>
-							{% endif %}
-						</div>
-					</div>
-					
-				</div>
-				
-			</div>
-		</div>
-	</div>
+    <div class="container text-white">
+        <div class="row text-white rounded post-mostrar rounded" style="background: #007F5F;">
+            <div class="container mb-3 mt-3 d-flex justify-content-end" style="color: #FFFFFF;">
+                <small><strong>Post creado por {{ object.usuario.username }} - {{ object.fecha_creacion }}</strong></small>
+            </div>            
+            <div class="container mb-4 d-flex justify-content-end">
+                {% if user.id == post.usuario.id %}
+                    <form method="post" action="{% url 'EliminarPost' post.id %}">{% csrf_token %}
+                        <button type="submit" value="Confirm" class="btn btn-eliminar btn-sm"><strong>ELIMINAR</strong></button>
+                        <a href="{% url 'EditarPost' post.id %}"  class="btn btn-editar btn-sm"><strong>Editar</strong></a>
+                    </form>	
+                {% endif %}
+            </div>            
+            <div class="container d-flex mt-3 mb-3 justify-content-center">
+                <h2 class="card-header" style="color: #FFFFFF">{{ object.titulo }}</h2>
+            </div>
+            <div class="container mb-5 " style="height: auto; width: 900px;background-color: #005943; color: #FFFFFF; border: 2px solid white; border-radius: 5px">
+                <br/>
+                <p>{{ object.contenido|safe }}</p>
+                <br/><br/>
+                <hr>
+                <form method="post" action="{% url 'like_post' post.id %}">
+                    {% csrf_token %}
+                    {% if liked %}
+                        <button type="submit" name="post_id" value="{{ post.id }}" class="btn btn-dislike btn-sm ">No me Gusta</button> 
+                    {% else %}
+                        <button type="submit" name="post_id" value="{{ post.id }}" class="btn btn-like btn-sm">Me Gusta</button> 
+                    {% endif %}
+                    <strong>- {{ total_likes }} LIKES</strong>
+                </form>
+                <br/>
+            </div>
+        </div>
+    </div>        
+    <div class="container text-white" style="min-height: calc(100vh - 330px - 100px);">
+        <div class="row text-white rounded post-mostrar rounded" >
+            <div class="container mb-5 " >
+                <div class="row ">
+                    <div class="col-xs-12 col-md-8" style="background: #FFFFFF; color: #000000; border-radius: 5px; border: 10px solid #93EDA9;">
+                        <h5 class="card-header"><strong>COMENTARIOS</strong></h5>                        
+                        <div class="card-body" >
+                            {% if not post.commentsPost.all %}
+                                No hay comentarios aún.
+                            {% else %}
+                                {% for comment in post.commentsPost.all %}
+                                    {% include "post/mostrar_comentarios.html" with comment=comment %}			        	
+                                {% endfor %}
+                            {% endif %}
+                            
+                        </div>
+                        <div class="text-center mb-4 mt-4">
+                            <a href="{% url 'CrearComentario' post.pk %}" class="btn btn-boton_personalizado btn-sm">Comentar</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-md-4"style="background: #93EDA9; color: #000000; border-radius: 5px; border: 10px solid white;">
+                        <h5 class="card-header"><strong>CREADOR DEL POST</strong></h5>
+                        <br/>
+                        <div class="card-body">
+                            
+                            <div align="center">
+                                <h5 class="card-title">Usuario: {{ post.usuario.username }}</h5>
+                                {% if object.usuario.imagen.url != None %}
+                                    <img src="{{ object.usuario.imagen.url }}" style="width:100px; height:100px; ">
+                                {% else %}
+                                    <img src="{% static 'usuarios/image/imagen_perfil_default.png' %}"  style="width:100px; height:100px;">
+                                {% endif %} 
+                            </div>
+                            {% if user.id == post.usuario.id %}
+                                <div class="text-center mb-4 mt-4">
+                                    <a href="{% url 'perfil' %}" class="btn btn-boton_personalizado btn-sm">Perfil</a>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>                    
+                </div>                
+            </div>
+        </div>
+    </div>
 
 
-	
+    
 {% endblock %}
