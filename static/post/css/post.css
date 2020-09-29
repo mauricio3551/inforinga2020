@@ -4,6 +4,7 @@
 	margin-left: 50px;
 	margin-right: 50px;		
 }
+
 .post-listar
 {
 	max-height: 470px;
@@ -124,8 +125,6 @@
   background-color: #EC94A2;
 }
 
-
-
 .btn-editar{
 	padding: .375rem .75rem;
 	border-radius: .25rem;
@@ -144,8 +143,6 @@
   background-color: #93EDA9;
 }
 
-
-
 .btn-eliminar{
 	padding: .375rem .75rem;
 	border-radius: .25rem;
@@ -163,8 +160,6 @@
 .btn-eliminar:active {
   background-color: #93EDA9;
 }
-
-
 
 .btn-like{
   padding: .375rem .75rem;
@@ -200,4 +195,16 @@
 
 .btn-dislike:active {
   background-color: #AB1807;
+}
+
+.fondo {
+	min-height: calc(100vh - 100px - 330px);
+}
+
+.post-ver {
+	min-height: calc(100vh - 100px - 330px);
+}
+
+.comentario {
+	min-height: calc(100vh - 100px - 330px);
 }
