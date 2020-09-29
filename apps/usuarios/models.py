@@ -20,7 +20,7 @@ class Provincia(models.Model):
 class Usuario(AbstractUser):
     universidad = models.CharField(max_length=50, null=True)
     ciudad = models.CharField(max_length=50)
-    imagen = models.ImageField(upload_to='perfil/',null=True, blank=True, default=None, validators=[validar_extension])
+    imagen = models.ImageField(upload_to='perfil/',null=True, blank=True, validators=[validar_extension])
 
     provincia = models.ForeignKey(Provincia, null=False, blank=False, on_delete=models.CASCADE)
 

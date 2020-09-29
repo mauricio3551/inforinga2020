@@ -22,8 +22,3 @@ class ModificarUsuario(UpdateView):
     def get_object(self):
         return self.request.user
     
-    def form_valid(self, form):
-        if form.instance.imagen.name:
-            ext = form.instance.imagen.name.split(".")[-1]
-            form.instance.imagen.name = form.instance.username+'.'+ext
-        return super().form_valid(form)
