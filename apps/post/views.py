@@ -1,11 +1,12 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
+from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView, TemplateView
 from apps.post.models import Post,Comentario
 from django.urls import reverse_lazy, reverse
 from apps.post.forms import PostForm, ComentarioForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.conf import settings
 from django.http import HttpResponseRedirect
+from django.db.models import Q
 
 import re
 
@@ -131,8 +132,20 @@ class PostEliminar(LoginRequiredMixin, DeleteView):
 	model = Post
 	success_url = reverse_lazy('PosteosRecientes')
 
+def Buscador(request):
+	return render(request,'buscar.html')
+	
 
 
+def BuscarPost(request):
+	queryset = request.GET.get("buscar")
+	posts = None
+	if queryset:
+		posts = Post.objects.filter(
+			Q(titulo__icontains= queryset)
+			).distinct()
+	print(posts)
+	return render(request,'buscar.html', {'posts':posts})
 
 #----------------------------------------------------- COMENTARIO --------------------------------------------------------------------------
 
