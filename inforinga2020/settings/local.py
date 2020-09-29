@@ -9,7 +9,7 @@ DATABASES = {
         'ENGINE': 'sql_server.pyodbc',
         'NAME': 'InforingaDB',
         'Trusted_Connection' : 'yes',
-        'HOST': 'localhost\SQLEXPRESS',
+        'HOST': 'localhost\\SQLEXPRESS01',
         'OPTIONS':{
             'driver':'SQL Server Native Client 11.0'
         }
