@@ -8,9 +8,8 @@ Posteos Recientes
 
 {% block css %}
   {{ block.super }}
-   <link rel="stylesheet" type="text/css" href="{% static 'post/css/post.css' %}">
+   <link rel="stylesheet" type="text/css" href="{% static 'post/css/buscar.css' %}">
 {% endblock %}
-
 
 
 {% block contenido %}
@@ -26,7 +25,7 @@ Posteos Recientes
 								<span class="input-group-list">
 									<i class="icon icon-search"></i>
 									<div class="text-center">
-										<button type="submit" class="btn btn-buscar mt-4" >Buscar</button>
+										<button type="submit" class="btn btn-buscar mt-4" onclick="Ocultar()">Buscar</button>
 									</div>
 									
 								</span>
@@ -110,8 +109,9 @@ Posteos Recientes
 					</ul>
 				</nav>
 			{% else %} 
-			<div class="text-center mb-4 mt-4">
-				Ningun Post coincide con su busqueda.
+				<div class="text-center mb-4 mt-4" id="negativo">
+					Ningun Post coincide con su busqueda.
+				</div>
 			{% endif %}
 		</div>
 	</div>

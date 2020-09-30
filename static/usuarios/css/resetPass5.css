@@ -1,3 +1,19 @@
 #inicio {
     padding-top: 20px;
 }
+
+.login {
+    min-height: calc(100vh - 90px - 330px);
+}
+
+.titulo {
+    padding-top: 50px;
+}
+
+#inicio {
+    padding-top: 30px;
+}
+
+#login {
+    padding-top: 10px;
+}

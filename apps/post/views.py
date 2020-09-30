@@ -136,11 +136,12 @@ def BuscarPost(request):
 	queryset = request.GET.get("buscar")
 	posts = None
 	if queryset:
-		u = Usuario.objects.filter(username__icontains=queryset)
+		u = Usuario.objects.filter(username__exact=queryset)
 		posts = Post.objects.filter(
 			Q(titulo__icontains= queryset) |
 			Q(usuario__in = u)
 			).distinct()
+	print(posts)
 	return render(request,'buscar.html', {'posts':posts})
 
 #----------------------------------------------------- COMENTARIO --------------------------------------------------------------------------
@@ -158,6 +159,6 @@ class ComentarioAgregar(LoginRequiredMixin, CreateView):
 		x.post_id = self.kwargs['pk']
 		x.usuario = self.request.user
 		x.save()
-		return redirect(self.success_url)
-
+#		return redirect(self.success_url)
+		return HttpResponseRedirect(reverse('MostrarPost', args=[str(pk)]))
 
