@@ -147,13 +147,11 @@ def BuscarPost(request):
 			Q(usuario__in = usu) |
 			Q(categoria__nombre__icontains= queryset) 
 			).distinct()
-	
 	if categoria_id:
 		posteos = Post.objects.filter(categoria_id = categoria_id)
 		resultados['posts'] = posteos
 	
 	return render(request,'buscar.html', resultados)
-
 
 #---------------------------------------------- COMENTARIO ----------------------------------------------
 
@@ -170,6 +168,6 @@ class ComentarioAgregar(LoginRequiredMixin, CreateView):
 		x.post_id = self.kwargs['pk']
 		x.usuario = self.request.user
 		x.save()
-		return redirect(self.success_url)
-
+#		return redirect(self.success_url)
+		return HttpResponseRedirect(reverse('MostrarPost', args=[str(pk)]))
 
