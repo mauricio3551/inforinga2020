@@ -19,21 +19,46 @@ Posteos Recientes
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 search">
-						<form method="get" >
-							<div id="custom-search-input">
-								<input type="text" class="form-control" placeholder="Buscar..." name="buscar">
-								<span class="input-group-list">
-									<i class="icon icon-search"></i>
-									<div class="text-center">
-										<button type="submit" class="btn btn-buscar mt-4" onclick="Ocultar()">Buscar</button>
-									</div>
-									
-								</span>
-							</div>
-						</form>
+						<div class="text-center">
+							<form method="get" >
+								<div id="custom-search-input">
+									<small>Ingrese Título del Post a buscar.</small>
+									<br/>
+									<small>Ingrese Nombre de Usuario del creador del Post a buscar.</small>
+									<input type="text" class="form-control" placeholder="Buscar..." name="buscar">
+									<span class="input-group-list">
+										<i class="icon icon-search"></i>
+										<div class="text-center">
+											<button type="submit" class="btn btn-buscar mt-4" >Buscar</button>
+										</div>
+									</span>
+								</div>
+							</form>
+						</div>
 					</div>
+
 				</div>
 			</div>
+			<div class="container">
+					<div class="row">
+						<div class="col-md-12 search">
+							<div class="text-center">
+								<form method="GET">
+									<small>Elija una Categoria.</small>
+									<br/>
+									<select name="filtro" class="select-css">
+										{% for cat in categorias %}
+											<option value="{{ cat.id }}" class="option">{{ cat.nombre }}</option>
+										{% endfor %}
+									</select>
+									<div class="text-center">
+										<button type="submit" class="btn btn-buscar mt-4">Buscar Por Categorias</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
 			{% if posts %}
 				{% for post in posts %}
 					<div class="post-listar card mt-4 cuerpo-oscuro">
@@ -109,7 +134,7 @@ Posteos Recientes
 					</ul>
 				</nav>
 			{% else %} 
-				<div class="text-center mb-4 mt-4" id="negativo">
+				<div class="text-center mb-4 mt-4">
 					Ningun Post coincide con su busqueda.
 				</div>
 			{% endif %}

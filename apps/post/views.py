@@ -127,24 +127,33 @@ class PostEliminar(LoginRequiredMixin, DeleteView):
 	model = Post
 	success_url = reverse_lazy('PosteosRecientes')
 
+
+#---------------------------------------------- BUSCADOR DE POST ----------------------------------------------
 def Buscador(request):
 	return render(request,'buscar.html')
-	
 
 
 def BuscarPost(request):
 	queryset = request.GET.get("buscar")
-	posts = None
-	if queryset:
-		u = Usuario.objects.filter(username__exact=queryset)
-		posts = Post.objects.filter(
-			Q(titulo__icontains= queryset) |
-			Q(usuario__in = u)
-			).distinct()
-	print(posts)
-	return render(request,'buscar.html', {'posts':posts})
 
-#----------------------------------------------------- COMENTARIO --------------------------------------------------------------------------
+	categoria_id = request.GET.get('filtro',None)
+	resultados = {}
+	categorias = Categoria.objects.all()
+	resultados['categorias'] = categorias
+	if queryset:
+		usu = Usuario.objects.filter(username__icontains=queryset)
+		resultados['posts'] = Post.objects.filter(
+			Q(titulo__icontains= queryset) |
+			Q(usuario__in = usu) |
+			Q(categoria__nombre__icontains= queryset) 
+			).distinct()
+	if categoria_id:
+		posteos = Post.objects.filter(categoria_id = categoria_id)
+		resultados['posts'] = posteos
+	
+	return render(request,'buscar.html', resultados)
+
+#---------------------------------------------- COMENTARIO ----------------------------------------------
 
 class ComentarioAgregar(LoginRequiredMixin, CreateView):
 	model = Comentario
