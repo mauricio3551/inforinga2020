@@ -7,11 +7,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.conf import settings
 from django.http import HttpResponseRedirect
 from django.db.models import Q
-<<<<<<< HEAD
 from apps.usuarios.models import *
-=======
-from apps.usuarios.models import Usuario
->>>>>>> master
 
 import re
 
