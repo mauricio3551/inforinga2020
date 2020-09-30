@@ -14,15 +14,15 @@ Recuperar Contraseña
 
 
 {% block contenido %}
-<div class="container login mt-5 text-white shadow-lg p-3 rounded" style="background:#007F5F">
+<div class="container login mt-5 text-white shadow-lg p-3 rounded" style="background-color: #303535">
     <div class="titulo d-flex justify-content-center mb-3 mt-5">
-        <h4>Un correo fue enviado a la dirección seleccionada para restablecer la contraseña</h4>
+        <h2 class="text-center">Un correo fue enviado a la dirección seleccionada para restablecer la contraseña</h2>
     </div>
-    <div class="container d-flex justify-content-center">            
-        <a class="text-white" href="{% url 'inicio' %}">Volver al Inicio. </a>
+    <div class="container d-flex justify-content-center" id="inicio">            
+        <h4><a class="text-white" href="{% url 'inicio' %}">Volver al Inicio. </a></h4>
     </div>
-    <div class="container d-flex justify-content-center">            
-        <a class="text-white" href="{% url 'login' %}">Volver a iniciar sesion. </a>
+    <div class="container d-flex justify-content-center" id="login">            
+        <h4><a class="text-white" href="{% url 'login' %}">Volver a iniciar sesion. </a></h4>
     </div>
 </div>
 {% endblock %}

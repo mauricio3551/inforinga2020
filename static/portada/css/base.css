@@ -48,35 +48,53 @@ body {
 .btn-boton_personalizado{
 	padding: .375rem .75rem;
 	border-radius: .25rem;
-	background-color: #E74E67;
-	color: #FFFFFF;
+	background-color: #EF891E;
+	color: #000000;
 	font-weight: bold;
 	transition: background-color .15s ease-in-out;
 }
 
 .btn-boton_personalizado:hover, .btn-boton_personalizado:focus {
-	background-color: #EC94A2;
+	background-color: #F0B474;
 	color: #000000
 }
 
 .btn-boton_personalizado:active {
-	background-color: #EC94A2;
+	background-color: #EF891E;
 }
 
 .btn-navbar{
 	padding: .375rem .75rem;
 	border-radius: .25rem;
-	background-color: #007F5F;
+	background-color: #858F8F;
 	color: #FFFFFF;
 	font-weight: bold;
 	transition: background-color .15s ease-in-out;
 }
 
 .btn-navbar:hover, .btn-navbar:focus {
-	background-color: #14A400;
-	color: #000000
+	background-color: #1C2525;
+	color: #FFFFFF
 }
 
 .btn-navbar:active {
-	background-color: #14A400;
+	background-color: #1C2525;
+}
+
+.btn-buscar{
+	padding: .375rem .75rem;
+	border-radius: .25rem;
+	background-color: #EF891E;
+	color: #000000;
+	font-weight: bold;
+	transition: background-color .15s ease-in-out;
+}
+
+.btn-buscar:hover, .btn-buscar:focus {
+  background-color: #F0B474;
+  color: #000000
+}
+
+.btn-buscar:active {
+  background-color: #EF891E;
 }

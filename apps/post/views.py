@@ -1,13 +1,17 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView, TemplateView
-from apps.post.models import Post,Comentario
+from apps.post.models import Post,Comentario, Categoria
 from django.urls import reverse_lazy, reverse
 from apps.post.forms import PostForm, ComentarioForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.conf import settings
 from django.http import HttpResponseRedirect
 from django.db.models import Q
+<<<<<<< HEAD
 from apps.usuarios.models import *
+=======
+from apps.usuarios.models import Usuario
+>>>>>>> master
 
 import re
 
@@ -165,6 +169,6 @@ class ComentarioAgregar(LoginRequiredMixin, CreateView):
 		x.post_id = self.kwargs['pk']
 		x.usuario = self.request.user
 		x.save()
-		return redirect(self.success_url)
-
+#		return redirect(self.success_url)
+		return HttpResponseRedirect(reverse('MostrarPost', args=[str(pk)]))
 
