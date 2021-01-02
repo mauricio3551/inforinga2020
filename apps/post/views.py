@@ -169,5 +169,5 @@ class ComentarioAgregar(LoginRequiredMixin, CreateView):
 		x.usuario = self.request.user
 		x.save()
 #		return redirect(self.success_url)
-		return HttpResponseRedirect(reverse('MostrarPost', args=[str(pk)]))
+		return HttpResponseRedirect(reverse('MostrarPost', args=[str(x.post_id)]))
 
